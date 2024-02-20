@@ -1,0 +1,8 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/38e003f6-34b9-4906-b17c-4db8588baa29/resourceGroups/FasilResourceGroup/providers/Microsoft.Web/sites/Fasil",
+    "appService.deploySubpath": ".",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
+}

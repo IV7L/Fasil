@@ -1,0 +1,87 @@
+{% if sub_phase == 'support_quote' or sub_phase == 'opposing_quote' or sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="supporting_quote">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_1">اقتباس الدعم</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.support_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="supporting_quote">
+  <a href="#service_1" style="pointer-events: none; color:grey;">اقتباس الدعم</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'opposing_quote' or sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="opposing_quote">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_2">اقتباس التعارض</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.opposing_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="opposing_quote">
+  <a href="#service_2" style="pointer-events: none; color:grey;">اقتباس التعارض</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="rebuttal">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_3">حجج التعارض</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.rebuttal1_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="rebuttal">
+  <a href="#service_3" style="pointer-events: none; color:grey;">حجج التعارض</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="counterargument">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_4">الحجج المضادة للدعم</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.counterargument1_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="counterargument">
+  <a href="#service_4" style="pointer-events: none; color:grey;">الحجج المضادة للدعم</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="question">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_5">اسئلة الدعم</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.question1_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="question">
+  <a href="#service_5" style="pointer-events: none; color:grey;">اسئلة الدعم</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'answer' or sub_phase == 'vote' %}
+<li class="active" id="answer">
+  <div class="service__item-3 service_animation" style="border: none; padding: 0px;">             
+    <a href="#service_6">اجابات التعارض</a> 
+    <div class="service__hover-3" style="background-image: url('{{ goal.answer1_quote.generated_image.url }}');"></div>
+  </div>
+</li>
+{% else %}
+<li id="answer">
+  <a href="#service_6" style="pointer-events: none; color:grey;">اجابات التعارض</a>
+</li>
+{% endif %}
+
+{% if sub_phase == 'vote' %}
+<li class="active" id="vote">
+  <a href="#service_7">التصويت &amp; الاسباب</a>
+</li>
+{% else %}
+<li id="vote">
+  <a href="#service_7" style="pointer-events: none; color:grey;">التصويت &amp; الاسباب</a>
+</li>
+{% endif %}

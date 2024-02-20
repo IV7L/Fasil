@@ -1,0 +1,873 @@
+
+{% if sub_phase == 'support_quote' or sub_phase == 'opposing_quote' or sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<div class="service__items-6" id="supporting_quote_content">
+    <div class="service__item-6 has__service_animation" id="service_1" data-secid="1">
+      <div class="animation__service_page">
+        <h2 class="service__title-6">
+          اقتباس الدعم
+        </h2>
+        
+
+        {% if goal.status == 'active' and goal.support_quote is None and current_user_type == 'support' and debate_member.order == 1 and sub_phase == 'support_quote' %}
+        <div id="main_one">
+          <ul>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+          </ul>
+          <textarea id="quote_area" style="height: 30vh; border-width:2px; background:transparent; color:white; border-color: grey; border-radius:10px; padding:10px" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+          <style>
+            #quote_area {
+              width: 40vw;
+            }
+            #main_one {
+              height: 80vh
+            }
+            /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+            @media screen and (max-width: 768px) {
+                #quote_area {
+                    width: 90vw; /* Set width to 90% of viewport width for mobile */
+                }
+                #main_one {
+                  height: 100vh;
+                }
+            }
+            </style>
+          <br>
+          <br>
+          <a href="#" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+            <i class="fa-solid fa-arrow-right"></i>اعتماد الاقتباس
+          </a>
+          <a disabled style="left:80px" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+            <i class="fa-solid fa-arrow-right"></i>اسناد التعليق
+          </a>
+          
+        </div>
+        {% else %}
+          <p>{{ goal.support_quote.body }}</p>
+          <ul>
+            <li>+ الكاتب: {{ goal.support_quote.father.username }}</li>
+            {% if debate.timeline.sub_phase == 'support_quote' %}
+              <li>+ بدآت: {{ current_phase_start_from }}</li>
+            {% else %}
+              <li>+ حالة المرحلة: غير متوفر</li>
+            {% endif %}
+
+            <li>+ <u><a href="{% url 'support_us' 1 %}" style="color: #ccc;">اختبار التشابه: غير متوفر</a></u></li>
+            <li>+ <u><a href="{% url 'support_us' 1 %}" style="color: #ccc;">اختبار الايجابية: غير متوفر</a></u></li>
+            <li style="position: relative;" onmouseover="this.querySelector('.image-popup').style.display='block'" onmouseout="this.querySelector('.image-popup').style.display='none'">
+              + الصوره المستوحاه
+              <div class="image-popup" style="display: none; position: absolute; top: 100%; left: 0; z-index: 1; background-color: white; border: 1px solid #ccc; padding: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <img src="{{ goal.support_quote.generated_image.url }}" alt="Generated Image">
+              </div>
+            </li>
+            <li>+ الارتباطات: <ul style="list-style: none; padding: 0; display: inline;">
+              {% for tag in goal.support_quote.tags.all %}
+                <li style="display: inline-block; margin-right: 5px; background-color: brown; padding: 2px 5px; border-radius: 4px;">{{ tag.name }}</li>
+              {% empty %}
+                <li>لا يوجد ارتباطات</li>
+              {% endfor %}
+            </ul></li>
+          </ul>
+          <div id="btn_wrapper">
+            <a href="{% url 'thread' support_quote_thread.id %}" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+              <i class="fa-solid fa-arrow-right"></i>لوح نقاش </br> اقتباس الدعم
+            </a>
+              <hr>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+{% endif %}
+
+{% if sub_phase == 'opposing_quote' or sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<div class="service__items-6" id="opposing_quote_content">
+    <div class="service__item-6 has__service_animation" id="service_2" data-secid="1">
+      <div class="animation__service_page">
+        <h2 class="service__title-6">
+          اقتباس التعارض
+        </h2>
+        {% if goal.status == 'active' and goal.opposing_quote is None and current_user_type == 'opposing' and debate_member.order == 1 and sub_phase == 'opposing_quote' %}
+        <div id="main_one">
+          <ul>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+            <li>+ يوجد</li>
+          </ul>
+          <textarea id="quote_area" style="height: 30vh; border-width:2px; background:transparent; color:white; border-color: grey; border-radius:10px; padding:10px" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+          <style>
+            #quote_area {
+              width: 40vw;
+            }
+            #main_one {
+              height: 80vh
+            }
+            /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+            @media screen and (max-width: 768px) {
+                #quote_area {
+                    width: 90vw; /* Set width to 90% of viewport width for mobile */
+                }
+                #main_one {
+                  height: 100vh;
+                }
+            }
+            </style>
+          <br>
+          <br>
+          <a href="#" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+            <i class="fa-solid fa-arrow-right"></i>اعتماد الاقتباس
+          </a>
+          <a disabled style="left:80px" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+            <i class="fa-solid fa-arrow-right"></i>اسناد التعليق
+          </a>
+          
+        </div>
+        {% else %}
+        <p>{{ goal.opposing_quote.body }}</p>
+        <ul>
+          <li>+ {{ goal.opposing_quote.father.username }}</li>
+          {% if debate.timeline.sub_phase == 'opposing_quote' %}
+            <li>+ متوفر</li>
+          {% else %}
+            <li>+ غير متوفر<</li>
+          {% endif %}
+          <li>+ اختبار التشابه</li>
+          <li>+ اختبار الايجابيه والسلبيه</li>
+          <li style="position: relative;" onmouseover="this.querySelector('.image-popup').style.display='block'" onmouseout="this.querySelector('.image-popup').style.display='none'">
+            + الصوره المستوحاه
+            <div class="image-popup" style="display: none; position: absolute; top: 100%; left: 0; z-index: 1; background-color: white; border: 1px solid #ccc; padding: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+              <img src="{{ goal.opposing_quote.generated_image.url }}" alt="Generated Image">
+            </div>
+          </li>
+          <li>+ <ul style="list-style: none; padding: 0; display: inline;">
+            {% for tag in goal.opposing_quote.tags.all %}
+              <li style="display: inline-block; margin-right: 5px; background-color: brown; padding: 2px 5px; border-radius: 4px;">{{ tag.name }}</li>
+            {% empty %}
+              <li>لا يوجد ارتباطات</li>
+            {% endfor %}
+          </ul></li>
+        </ul>
+
+        <div id="btn_wrapper" style = "display: flex">
+          <a
+            href="{% url 'thread' opposing_quote_thread.id %}"
+            target='"_blank"'
+            rel='"nofollow"'
+            class="wc-btn-secondary btn-item btn-hover"
+            ><span></span>
+            <i class="fa-solid fa-arrow-right"></i>لوح نقاش </br> اقتباس التعارض
+            </a>
+            <hr>
+            
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if sub_phase == 'rebuttal' or sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<div style="width: 80vw" id="rebuttal_content">
+    <div class="service__item-6 has__service_animation" id="service_7" data-secid="1">
+      <div class="animation__service_page">
+        <h2 class="service__title-6">حجج التعارض</h2>
+        <p>يمكنك اختيار حجة التعارض للتحويل لصفحه النقاش الخاصة بالحجة</p>
+        <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+
+          <div class="service__list">
+            {% if goal.status == 'active' and goal.rebuttal3_quote is None and goal.rebuttal2_quote is None and goal.rebuttal1_quote is None and current_user_type == 'opposing' and debate_member.order == 2 and sub_phase == 'rebuttal' %}
+
+              <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+                {% csrf_token %}
+                <div>
+                  <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                      <div class="service__title-wrapper" style="width: 20%;" >
+                        <h4 class="service__title" style="margin: 20px;">
+                          الطرح <br />الاول
+                        </h4>
+                      </div>
+
+                      <div class="field-input" style="width: 80%;">
+                        <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                      </div>
+                  
+                  </div>
+                </div>
+              </form>
+              <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+                {% csrf_token %}
+                <div>
+                  <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                      <div class="service__title-wrapper" style="width: 20%;" >
+                        <h4 class="service__title" style="margin: 20px;">
+                          الطرح <br />الثاني
+                        </h4>
+                      </div>
+
+                      <div class="field-input" style="width: 80%;">
+                        <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                      </div>
+                  
+                  </div>
+                </div>
+              </form>
+              <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+                {% csrf_token %}
+                <div>
+                  <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                      <div class="service__title-wrapper" style="width: 20%;" >
+                        <h4 class="service__title" style="margin: 20px;">
+                          الطرح <br />الثالث
+                        </h4>
+                      </div>
+
+                      <div class="field-input" style="width: 80%;">
+                        <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                      </div>
+                  
+                  </div>
+                </div>
+              </form>
+              <a href="#" target='"_blank"' rel='"nofollow"' class="wc-btn-secondary btn-item btn-hover"><span></span>
+                <i class="fa-solid fa-arrow-right"></i>اعتماد الاقتباس
+              </a>
+
+            
+            {% else %}
+            <a href="{% url 'thread' rebuttal_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الطرح <br />الاول
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.rebuttal1_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.rebuttal1_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' rebuttal_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الطرح <br />الثاني
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.rebuttal2_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.rebuttal2_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' rebuttal_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الطرح <br />الثالث
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.rebuttal3_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.rebuttal3_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+{% endif %}
+
+{% if sub_phase == 'counterargument' or sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<div style="width: 80vw;" id="counterargument_content">
+    <div class="service__item-6 has__service_animation" id="service_4" data-secid="1" style="margin-top: 50px">
+      <div class="animation__service_page">
+        <h2 class="service__title-6">الحجج المضادة للدعم</h2>
+        <p>يمكنك اختيار الحجة المضادة للدعم للتحويل لصفحه النقاش الخاصة بالحجة</p>
+        <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+
+          <div class="service__list">
+            {% if goal.status == 'active' and goal.counterargument3_quote is None and goal.counterargument2_quote is None and goal.counterargument1_quote is None and current_user_type == 'support' and debate_member.order == 2 and sub_phase == 'counterargument' %}
+
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        رد الطرح <br />الاول
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        رد الطرح <br />الثاني
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        رد الطرح <br />الثالث
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            
+            {% else%}
+            <a href="{% url 'thread' counterargument_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    رد الطرح <br />الاول
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 60vw;padding: 20px">
+                    {{ goal.counterargument1_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.counterargument1_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' counterargument_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    رد الطرح <br />الثاني
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.counterargument2_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.counterargument2_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' counterargument_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    رد الطرح <br />الثالث
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.counterargument3_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.counterargument3_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+{% endif %}
+
+{% if sub_phase == 'question' or sub_phase == 'answer' or sub_phase == 'vote' %}
+<div style="width: 80vw" id="question_content">
+    <div class="service__item-6 has__service_animation" id="service_5" data-secid="1" >
+      <div class="animation__service_page">
+        <h2 class="service__title-6">اسئلة الدعم</h2>
+        <p>يمكنك اختيار سؤال الدعم للتحويل لصفحه النقاش الخاصة بالسؤال</p>
+        <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+
+          <div class="service__list">
+            {% if goal.status == 'active' and goal.question3_quote is None and goal.question2_quote is None and goal.question1_quote is None and current_user_type == 'support' and debate_member.order == 3 and sub_phase == 'question' %}
+
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        السؤال <br />الاول
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        السؤال <br />الثاني
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        السؤال <br />الثالث
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            
+            {% else%}
+            <a href="{% url 'thread' question_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                  <div class="service__title-wrapper">
+                    <h4 class="service__title" style="margin: 20px;">
+                      السؤال <br />الاول
+                    </h4>
+                  </div>
+                  <div>
+                    <p style="width: 70vw;padding: 20px">
+                      {{ goal.question1_quote.body}}
+                    </p>
+                  </div>
+                  <div class="service__link">
+                    <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.question1_quote.comments.count }}</i></p>
+                  </div>
+                </div>
+              </a>
+              <a href="{% url 'thread' question_quote_thread.id %}" target="_self">
+                <div class="service__item animation_home1_service" data-service="1">
+                  <div class="service__title-wrapper">
+                    <h4 class="service__title" style="margin: 20px;">
+                      السؤال <br />الثاني
+                    </h4>
+                  </div>
+                  <div>
+                    <p style="width: 70vw;padding: 20px">
+                      {{ goal.question2_quote.body}}
+                    </p>
+                  </div>
+                  <div class="service__link">
+                    <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.question2_quote.comments.count }}</i></p>
+                  </div>
+                </div>
+              </a>
+              <a href="{% url 'thread' question_quote_thread.id %}" target="_self">
+                <div class="service__item animation_home1_service" data-service="1">
+                  <div class="service__title-wrapper">
+                    <h4 class="service__title" style="margin: 20px;">
+                      السؤال <br />الثالث
+                    </h4>
+                  </div>
+                  <div>
+                    <p style="width: 70vw;padding: 20px">
+                      {{ goal.question3_quote.body}}
+                    </p>
+                  </div>
+                  <div class="service__link">
+                    <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.question3_quote.comments.count }}</i></p>
+                  </div>
+                </div>
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+{% endif %}
+
+{% if sub_phase == 'answer' or sub_phase == 'vote' %}
+<div style="width: 80vw;" id="answer_content">
+    <div
+      class="service__item-6 has__service_animation"
+      id="service_4"
+      data-secid="1"
+      style="margin-top: 50px"
+    >
+      <div class="animation__service_page">
+        <h2 class="service__title-6">اجابات التعارض</h2>
+        <p>يمكنك اختيار اجابة السؤال للتعارض للتحويل لصفحه النقاش الخاصة بالاجابة</p>
+        <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+
+          <div class="service__list">
+            {% if goal.status == 'active' and goal.answer3_quote is None and goal.answer2_quote is None and goal.answer1_quote is None and current_user_type == 'opposing' and debate_member.order == 3 and sub_phase == 'answer' %}
+
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        اجابة السؤال <br />الاول
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        اجابة السؤال <br />الثاني
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            <form action="#" method="post" class="comment__form add-comment-form" novalidate>
+              {% csrf_token %}
+              <div>
+                <div class="col-lg-10 col-md-10 col-sm-10 form-group" style="display: flex;">
+
+                    <div class="service__title-wrapper" style="width: 20%;" >
+                      <h4 class="service__title" style="margin: 20px;">
+                        اجابة السؤال <br />الثالث
+                      </h4>
+                    </div>
+
+                    <div class="field-input" style="width: 80%;">
+                      <textarea placeholder="اكتب تعليقك هنا" id="comment" name="comment" style="background-color: transparent;border-width:1px; color:white; border-color: grey; border-radius:5px; padding:10px; border-style: solid;" placeholder="ابدأ بكتابة التعليق هنا ..." ></textarea>
+                    </div>
+                
+                </div>
+              </div>
+            </form>
+            
+            {% else%}
+            <a href="{% url 'thread' answer_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الاجابة <br />الاولى
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.answer1_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.answer1_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' answer_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الاجابة <br />الثانية
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.answer2_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.answer2_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'thread' answer_quote_thread.id %}" target="_self">
+              <div class="service__item animation_home1_service" data-service="1">
+                <div class="service__title-wrapper">
+                  <h4 class="service__title" style="margin: 20px;">
+                    الاجابة <br />الثالثة
+                  </h4>
+                </div>
+                <div>
+                  <p style="width: 70vw;padding: 20px">
+                    {{ goal.answer3_quote.body}}
+                  </p>
+                </div>
+                <div class="service__link">
+                  <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;"><i class="fa-solid fa-arrow-right">{{ goal.answer3_quote.comments.count }}</i></p>
+                </div>
+              </div>
+            </a>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+{% endif %}
+
+{% if sub_phase == 'vote' %}
+{% if goal.status == 'finished' %}
+<div style="width: 80vw" id="vote_content">
+
+  <div class="service__item-6 has__service_animation" id="service_7" data-secid="1">
+    <div class="animation__service_page">
+      <h2 class="service__title-6">التصويت واهم الاسباب</h2>
+      <p>vote sub</p>
+      <ul>
+        <li>+ vote arrt</li>
+        <li>+ similarity ٢</li>
+        <li>+ op_neg ٤</li>
+      </ul>
+      <div
+        class="col-xxl-8 col-xl-8 col-lg-12 col-md-12"
+        style="background-color: {% if goal_voting_values == 'support' %}green{% else %}red{% endif %};"
+      >
+        <div class="service__list">
+          <a
+            target="_self"
+            href="{% url 'team_thought' goal.id debate_team_support.id %}"
+          >
+            <div
+              class="service__item animation_home1_service"
+              data-service="1"
+            >
+              <div class="service__number">
+                <span>01</span>
+              </div>
+              <div
+                class="service__title-wrapper"
+              >
+                <h4 class="service__title">
+                  فريق <br />الدعم
+                </h4>
+              </div>
+              <div class="service__text">
+                <p>
+                  We help brands stand out
+                  through aweful, elegant
+                  visual design. Our design
+                  mainly philosophy.
+                </p>
+              </div>
+              <div class="service__link">
+                <p>
+                  {{ team1_count }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="col-xxl-8 col-xl-8 col-lg-12 col-md-12"
+        style="background-color: {% if goal_voting_values == 'opposing' %}green{% else %}red{% endif %};"
+      >
+        <div class="service__list">
+          <a
+            target="_self"
+            href="{% url 'team_thought' goal.id debate_team_opposing.id %}"
+          >
+            <div
+              class="service__item animation_home1_service"
+              data-service="1"
+            >
+              <div class="service__number">
+                <span>02</span>
+              </div>
+              <div
+                class="service__title-wrapper"
+              >
+                <h4 class="service__title">
+                  فريق <br />التعارض
+                </h4>
+              </div>
+              <div class="service__text">
+                <p>
+                  We help brands stand out
+                  through aweful, elegant
+                  visual design. Our design
+                  mainly philosophy.
+                </p>
+              </div>
+              <div class="service__link">
+                <p>
+                  {{ team2_count }}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+</div>
+{% else %}
+<div style="width: 80vw" id="vote_content">
+
+  <div class="service__item-6 has__service_animation" id="service_7" data-secid="1">
+    <div class="animation__service_page">
+      <h2 class="service__title-6" >التصويت واهم الاسباب</h2>
+      <p>بمجرد اختيار الفريق سيتم التحويل للوح الرآي الخاص بالفريق</br> مع عرض افضل الاقتباسات الخاصة باصحاب الاصوات السابقة</p>
+      <div class="col-xxl-12 col-xl-8 col-lg-16 col-md-16" style="display:none;">
+        <p>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</p>
+        <ul>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+        </ul>
+        <ul>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+          <li>class="service__item-6 has__service_animation" id="service_7" data-secid="1"</li>
+        </ul>
+      </div>
+
+      <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+        <div class="service__list">
+          <a href="{% url 'team_thought' debate_team_support.id goal.id %}" target="_self" class="team_hover">
+            <div class="service__item animation_home1_service" data-service="1">
+              <div class="service__number">
+                <span>١</span>
+              </div>
+              <div class="service__title-wrapper" >
+                <h4 class="service__title">
+                  فريق <br />الدعم
+                </h4>
+              </div>
+              <div class="service__text" >
+                  <div class="price__amount">
+                    <p  style="color:white">{{ vote_box.support_team_tokens.count }}<span>صوت</span></p>
+                  </div>
+              </div>
+              <div class="service__link" >
+                <p>
+                  <i
+                    class="fa-solid fa-arrow-right"
+                  ></i>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
+        <div class="service__list">
+          <a href="{% url 'team_thought' debate_team_opposing.id goal.id %}" target="_self" class="team_hover">
+            <div class="service__item animation_home1_service" data-service="1">
+              <div class="service__number">
+                <span>٢</span>
+              </div>
+              <div class="service__title-wrapper">
+                <h4 class="service__title">
+                  فريق <br />التعارض
+                </h4>
+              </div>
+              <div class="service__text">
+                <div class="price__amount">
+                  <p  style="color:white">{{ vote_box.opposing_team_tokens.count }}<span>صوت</span></p>
+                </div>
+              </div>
+              <div class="service__link">
+                <p>
+                  <i
+                    class="fa-solid fa-arrow-right"
+                  ></i>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+</div>
+{% endif %}
+{% endif %}
