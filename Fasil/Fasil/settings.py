@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIRS = os.path.join(BASE_DIR, "static")
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "0d51990170c6e649a23cf1d3ca46a8c7"
 DEBUG = True
 ALLOWED_HOSTS = ['*', ]
 
