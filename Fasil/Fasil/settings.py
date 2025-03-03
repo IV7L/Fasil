@@ -69,22 +69,22 @@ AUTH_USER_MODEL = 'account.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'fasil-local',
-#        'USER': 'main',
-#        'PASSWORD': 'main',
-#        'HOST': 'localhost',
-#        'PORT': '5432',
-#    }
-#}
+ DATABASES = {
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'fasil_render_postgresql',
+        'USER': 'fasil_render_postgresql_user',
+        'PASSWORD': 'm5zcxERdHE35kuW9y9ecXJZll5AbXgPr',
+        'HOST': 'dpg-cv30681u0jms73frjl9g-a',
+        'PORT': '5432',
+    }
+}
 
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
