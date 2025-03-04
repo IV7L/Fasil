@@ -42,7 +42,7 @@ def callback(request):
         print('passed', user)
         if user:
             login_user(request, user)
-    return redirect(request.build_absolute_uri(reverse("debate")))
+    return redirect(request.build_absolute_uri(reverse("index")))
 
 def logout(request):
     logout_user(request)
